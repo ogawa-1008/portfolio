@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>家計簿アプリ 完全版</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <h1 class="title">家計簿アプリ 完全版</h1>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2 class="section-title">記録を追加</h2>
+      <form id="form" class="form">
+        <input type="text" id="item" placeholder="項目" class="input" required>
+        <input type="number" id="amount" placeholder="金額" class="input" required>
+        <input type="date" id="date" class="input" required>
+
+        <select id="type" class="select">
+          <option value="income">収入</option>
+          <option value="expense">支出</option>
+        </select>
+
+        <select id="category" class="select">
+          <option value="食費">食費</option>
+          <option value="交通費">交通費</option>
+          <option value="光熱費">光熱費</option>
+          <option value="その他">その他</option>
+        </select>
+
+        <button type="submit" class="btn btn-add">追加</button>
+      </form>
+    </section>
+
+    <section class="toolbar">
+      <div class="filter-group card">
+        <label for="month" class="label">月選択：</label>
+        <select id="month" class="select month-select">
+          <option value="all">全期間</option>
+        </select>
+      </div>
+      <button id="export" class="btn btn-export">CSV出力</button>
+    </section>
+
+    <section class="totals-grid">
+      <div id="totals" class="totals card"></div>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">履歴</h2>
+      <ul id="list" class="list"></ul>
+    </section>
+
+    <section class="charts-grid">
+      <div class="card">
+        <h2 class="section-title">時系列（収入/支出）</h2>
+        <canvas id="chart" class="chart"></canvas>
+      </div>
+      <div class="card">
+        <h2 class="section-title">カテゴリー別（支出）</h2>
+        <canvas id="pieChart" class="chart"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <script src="./renderer.js"></script>
+</body>
+</html>
